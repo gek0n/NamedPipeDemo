@@ -16,9 +16,10 @@ int main(int argc, char *argv[])
     SECURITY_WORLD_RID,
     0, 0, 0, 0, 0, 0, 0,
     &pEveryoneSID)) {
-    printf("AllocateAndInitializeSid Error %#X\n", GetLastError());
+    printf("[-] AllocateAndInitializeSid error: %#X\n", GetLastError());
     return FALSE;
   }
+  printf("[>] SID has been allocated at %p\n", pEveryoneSID);
 
   EXPLICIT_ACCESS_A ea;
   ZeroMemory(&ea, sizeof(EXPLICIT_ACCESS));
@@ -36,25 +37,28 @@ int main(int argc, char *argv[])
   PSECURITY_DESCRIPTOR pSD;
   pSD = (PSECURITY_DESCRIPTOR)LocalAlloc(LPTR, SECURITY_DESCRIPTOR_MIN_LENGTH);
   if (NULL == pSD) {
-    printf("LocalAlloc Error %#X\n", GetLastError());
+    printf("[-] Alloc memory for SECURITY_DESCRIPTOR error: %#X\n", GetLastError());
   }
+  printf("[>] Security descriptor has been allocated at %p\n", pSD);
 
   if (!InitializeSecurityDescriptor(pSD,
     SECURITY_DESCRIPTOR_REVISION)) {
-    printf("InitializeSecurityDescriptor Error %#X\n", GetLastError());
+    printf("[-] InitializeSecurityDescriptor error: %#X\n", GetLastError());
   }
+  printf("[>] Security descriptor has been initialized\n");
 
   if (!SetSecurityDescriptorDacl(pSD, TRUE, pACL, FALSE))
   {
-    printf("SetSecurityDescriptorDacl Error %#X\n", GetLastError());
+    printf("[-] SetSecurityDescriptorDacl error: %#X\n", GetLastError());
   }
+  printf("[>] Set DACL to security descriptor\n");
 
   SECURITY_ATTRIBUTES sa;
   sa.nLength = sizeof(SECURITY_ATTRIBUTES);
   sa.lpSecurityDescriptor = pSD;
   sa.bInheritHandle = FALSE;
 
-  printf("[>] Creating named pipe...\n");
+  printf("[>] Creating named pipe with specified security attributes...\n");
   pipe = CreateNamedPipeA(
            "\\\\.\\pipe\\g3k0nPipe",
            PIPE_ACCESS_DUPLEX | FILE_FLAG_OVERLAPPED,
@@ -71,9 +75,6 @@ int main(int argc, char *argv[])
   {
     printf("[-] Failure\n");
     return -1;
-  }
-  else {
-    printf("[+] Success\n");
   }
 
   printf("[+] Created\n");
