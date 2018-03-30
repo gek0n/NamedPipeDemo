@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NamedPipeServer", "NamedPipeServer\NamedPipeServer.vcxproj", "{F473FBA8-44BD-44C7-940A-4B039E5C9B0F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{F473FBA8-44BD-44C7-940A-4B039E5C9B0F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NamedPipeClient", "NamedPipeClient\NamedPipeClient.vcxproj", "{FE7BBC22-3BC4-42D7-ACB3-99066331F018}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{FE7BBC22-3BC4-42D7-ACB3-99066331F018}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetDefaultSecurityDescriptor", "GetDefaultSecurityDescriptor\GetDefaultSecurityDescriptor.vcxproj", "{7E40AE7C-994D-4EA4-AC28-7523A30BF5D5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConfiguredServer", "ConfiguredServer\ConfiguredServer.vcxproj", "{B3959309-49F1-4C76-A524-3AF63A2453FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{7E40AE7C-994D-4EA4-AC28-7523A30BF5D5}.Release|x64.Build.0 = Release|x64
 		{7E40AE7C-994D-4EA4-AC28-7523A30BF5D5}.Release|x86.ActiveCfg = Release|Win32
 		{7E40AE7C-994D-4EA4-AC28-7523A30BF5D5}.Release|x86.Build.0 = Release|Win32
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Debug|x64.ActiveCfg = Debug|x64
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Debug|x64.Build.0 = Debug|x64
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Debug|x86.Build.0 = Debug|Win32
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Release|x64.ActiveCfg = Release|x64
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Release|x64.Build.0 = Release|x64
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Release|x86.ActiveCfg = Release|Win32
+		{B3959309-49F1-4C76-A524-3AF63A2453FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
